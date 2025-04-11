@@ -17,7 +17,7 @@ const Scoreboard = () => {
   return (
     <div className="bg-white rounded-md shadow border border-gray-300 p-4 flex justify-between items-center">
       <div className="flex flex-col text-left">
-        <span className="text-sm text-gray-500 uppercase">Local</span>
+        <span className="text-sm text-gray-500 uppercase">Sao Paulo</span>
         <span className="text-lg font-semibold">{match.home_name}</span>
         <span className="text-4xl font-bold">{homeScore}</span>
       </div>
@@ -28,7 +28,7 @@ const Scoreboard = () => {
       </div>
 
       <div className="flex flex-col text-right">
-        <span className="text-sm text-gray-500 uppercase">Visita</span>
+        <span className="text-sm text-gray-500 uppercase">Alianza Lima</span>
         <span className="text-lg font-semibold">{match.away_name}</span>
         <span className="text-4xl font-bold">{awayScore}</span>
       </div>

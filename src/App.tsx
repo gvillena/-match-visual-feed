@@ -1,10 +1,42 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 import Scoreboard from "./components/Scoreboard";
 import LiveEvents from "./components/LiveEvents";
 import StatsPanel from "./components/StatsPanel";
 import TeamLineup from "./components/TeamLineup";
+import { getMatchById } from "./services/liveScoreApi";
 
 const queryClient = new QueryClient();
+const matchId = import.meta.env.VITE_MATCH_ID;
+
+function MatchLogos() {
+  const { data: match } = useQuery({
+    queryKey: ["match", matchId],
+    queryFn: () => getMatchById(matchId),
+    refetchInterval: 5000,
+  });
+
+  if (!match) return null;
+
+  return (
+    <div className="flex items-center justify-between  rounded-md p-3 ">
+      <img
+        src={match.home.logo}
+        alt={match.home_name}
+        className="h-24 w-auto"
+      />
+      <div className="text-center text-white font-bold">vs</div>
+      <img
+        src={match.away.logo}
+        alt={match.away_name}
+        className="h-24 w-auto"
+      />
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -19,6 +51,9 @@ function App() {
               className="w-24 h-auto opacity-90"
             />
           </div>
+
+          {/* Logos de los equipos */}
+          <MatchLogos />
 
           <Scoreboard />
           <LiveEvents />

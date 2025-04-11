@@ -47,8 +47,8 @@ const LiveEvents = () => {
               {event.time}'
             </span>
             <span className="mr-1">{eventIcons[event.event] ?? "📌"}</span>
-            <strong>{event.player}</strong> – (
-            {event.home_away === "h" ? match.home_name : match.away_name})
+            <strong>{event.player}</strong> (
+            {event.home_away === "h" ? match.home.name : match.away.name})
           </li>
         ))}
       </ul>

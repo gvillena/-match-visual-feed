@@ -24,7 +24,6 @@ const TeamLineup = () => {
   const { data: lineupData, isLoading } = useQuery({
     queryKey: ["lineups", matchId],
     queryFn: () => getMatchLineups(matchId),
-    refetchInterval: 10000,
   });
 
   if (isLoading || !lineupData) return null;
